@@ -1,5 +1,6 @@
 package com.wei.adb;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,13 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mTipsTv = findViewById(R.id.tv_tips);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Intent intent = new Intent(this, NotificationService.class);
+        startService(intent);
     }
 
     public void openADB(View view)
